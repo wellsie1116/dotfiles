@@ -1,0 +1,101 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+alignment top_left
+background no
+double_buffer yes
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont DejaVu Sans Mono:size=12
+gap_x 5
+gap_y 60
+minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_transparent yes
+own_window_class Conky
+own_window_type desktop
+own_window_hints undecorated,skip_taskbar,skip_pager
+stippled_borders 0
+update_interval 2.0
+uppercase no
+use_spacer none
+show_graph_scale yes
+show_graph_range no
+#overview
+color0 grey80
+color1 white
+#file systems
+color2 turquoise3
+#color2 cadetblue
+color3 turquoise
+#networking
+color4 green3
+color5 green
+#top
+color6 orange3
+color7 orange
+#error
+color8 yellow
+color9 red
+
+TEXT
+${color0}$nodename: $hr
+${color0}Uptime:$color1 $uptime
+${color0}Frequency (in GHz):$color1 $freq_g
+${color0}CPU1:${if_match ${cpu cpu1} > 80.0}$color9$else$color1$endif ${cpu cpu1}% ${cpubar cpu1}
+${color0}CPU2:${if_match ${cpu cpu2} > 80.0}$color9$else$color1$endif ${cpu cpu2}% ${cpubar cpu2}
+${color0}Processes:$color1 $processes  ${color0}Running:$color1 $running_processes
+
+${color2}File systems: $hr
+${color2} RAM   ${if_match ${memperc}>90}$color9$else${if_match ${memperc}>80}$color8$else$color3$endif$endif$mem/$memmax ${membar 4}
+${color2} Swap  ${if_match ${swapperc}>90}$color9$else${if_match ${swapperc}>80}$color8$else$color3$endif$endif$swap/$swapmax ${swapbar 4}
+${color2} /     ${if_match ${fs_used_perc /}>90}$color9$else${if_match ${fs_used_perc /}>80}$color8$else$color3$endif$endif${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${color2} /home ${if_match ${fs_used_perc /home}>90}$color9$else${if_match ${fs_used_perc /home}>80}$color8$else$color3$endif$endif${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
+
+${color4}Networking: $hr
+Down ${downspeedf eth0}k/s ${alignr}${totaldown eth0} total
+${color5}${downspeedgraph eth0}
+${color4}Up ${upspeedf eth0}k/s ${alignr}${totalup eth0} total
+${color5}${upspeedgraph eth0}
+
+${color6}Top: $hr
+${color6} Name               PID   CPU%   MEM%
+${if_match ${top cpu 1} > 40.0}$color9$else${color7}$endif ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+${if_match ${top cpu 2} > 40.0}$color9$else${color7}$endif ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${if_match ${top cpu 3} > 40.0}$color9$else${color7}$endif ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+${if_match ${top cpu 4} > 40.0}$color9$else${color7}$endif ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
