@@ -36,9 +36,11 @@ draw_graph_borders yes
 draw_outline no
 draw_shades no
 use_xft yes
-xftfont DejaVu Sans Mono:size=12
-gap_x 5
-gap_y 60
+xftfont DejaVu Sans Mono:size=10
+gap_x 20
+gap_y 40
+#gap_x 20
+#gap_y 165
 minimum_size 5 5
 net_avg_samples 2
 no_buffers yes
@@ -54,7 +56,7 @@ stippled_borders 0
 update_interval 1.0
 uppercase no
 use_spacer none
-show_graph_scale yes
+#show_graph_scale yes
 show_graph_range no
 #overview
 color0 grey80
@@ -99,3 +101,6 @@ ${if_match ${top cpu 1} > 40.0}$color9$else${color7}$endif ${top name 1} ${top p
 ${if_match ${top cpu 2} > 40.0}$color9$else${color7}$endif ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
 ${if_match ${top cpu 3} > 40.0}$color9$else${color7}$endif ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
 ${if_match ${top cpu 4} > 40.0}$color9$else${color7}$endif ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+
+${color1}TODO: $hr
+${color0}${head ~/TODO 15}
