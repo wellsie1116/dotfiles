@@ -3,6 +3,7 @@ set number
 set hlsearch
 set wildmenu
 set hidden
+set mouse=a
 
 let mapleader = ","
 
@@ -18,12 +19,17 @@ nnoremap <Leader>w :set nolist!<CR>
 runtime macros/matchit.vim
 
 "Clear search highlighting
-nnoremap <Leader>s :let @/ = ""<CR>
+nnoremap <silent> <Leader>s :let @/ = ""<CR>
 
 "Toggle line numbers with <F2> for easy code copying
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
-"Pretty indentation
+"Bundles
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'surround.vim'
+Bundle 'taglist.vim'
 filetype plugin indent on
 
 "latex-suite info
@@ -54,8 +60,8 @@ let Tlist_File_Fold_Auto_Close = 1
 let @p = "^/	ieldt($s{}j"
 
 " Execute run command in a makefile
-map <buffer> <Leader>e :update<CR>:!clear<CR>:!make run <CR>
-map <buffer> <Leader>m :update<CR>:make -sj <CR>
+map <Leader>e :update<CR>:!clear<CR>:!make run <CR>
+map <Leader>m :update<CR>:make -sj <CR>
 
 command! Reload :source ~/.vimrc
 
