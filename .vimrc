@@ -24,17 +24,22 @@ nnoremap <silent> <Leader>s :let @/ = ""<CR>
 "Toggle line numbers with <F2> for easy code copying
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
+"Tab reordering
+nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
 "Bundles
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'surround.vim'
 Bundle 'taglist.vim'
 filetype plugin indent on
 
 "latex-suite info
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
+let g:Imap_FreezeImpl=0
+nnoremap <silent> <F8> :let Imap_FreezeImpl = !Imap_FreezeImpl<CR>:echo Imap_FreezeImpl<CR>
 
 "NERDTree
 let NERDTreeIgnore=['\.vim$', '\~$', '\.o', '\.la', '\.in']
@@ -62,7 +67,10 @@ let @p = "^/	ieldt($s{}j"
 " Execute run command in a makefile
 map <Leader>e :update<CR>:!clear<CR>:!make run <CR>
 map <Leader>m :update<CR>:make -sj <CR>
+map <Leader>fx :%! tidy -utf8 -xml -w 5 -i -q -asxml \| sed "s/^\(  \)*\w/  \0/"<CR>
 
 command! Reload :source ~/.vimrc
+
+set noignorecase
 
 colorscheme desert
