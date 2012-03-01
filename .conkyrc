@@ -88,6 +88,7 @@ ${color2} RAM   ${if_match ${memperc}>90}$color9$else${if_match ${memperc}>80}$c
 ${color2} Swap  ${if_match ${swapperc}>90}$color9$else${if_match ${swapperc}>80}$color8$else$color3$endif$endif$swap/$swapmax ${swapbar 4}
 ${color2} /     ${if_match ${fs_used_perc /}>90}$color9$else${if_match ${fs_used_perc /}>80}$color8$else$color3$endif$endif${fs_used /}/${fs_size /} ${fs_bar 6 /}
 ${color2} /home ${if_match ${fs_used_perc /home}>90}$color9$else${if_match ${fs_used_perc /home}>80}$color8$else$color3$endif$endif${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
+${color2} /tmp  ${if_match ${fs_used_perc /tmp}>90}$color9$else${if_match ${fs_used_perc /tmp}>80}$color8$else$color3$endif$endif${fs_used /tmp}/${fs_size /tmp} ${fs_bar 6 /tmp}
 
 ${color4}Networking: $hr
 Down ${downspeedf eth0}k/s ${alignr}${totaldown eth0} total
