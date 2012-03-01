@@ -67,8 +67,8 @@ let @p = "^/	ieldt($s{}j"
 " Execute run command in a makefile
 map <Leader>e :update<CR>:!clear<CR>:!make run <CR>
 map <Leader>m :update<CR>:make -sj <CR>
-map <Leader>fx :%! tidy -utf8 -xml -w 5 -i -q -asxml \| sed "s/^\(  \)*\w/  \0/"<CR>
-
+map <silent> <Leader>fx :%! tidy -utf8 -xml -w 5 -i -q -asxml \| sed "s/^\(  \)*\w/  \0/"<CR>
+map <silent> <Leader>fj :%! python -c "import sys; import json as j; print(j.dumps(j.loads(sys.stdin.read()), indent=1))"<CR>
 command! Reload :source ~/.vimrc
 
 set noignorecase
