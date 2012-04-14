@@ -13,7 +13,7 @@ set directory=~/.vim/tmp,~/tmp,/var/tmp,/tmp,.
 
 "Configure whitespace display
 set listchars=tab:>-,trail:·,eol:$
-nnoremap <Leader>w :set nolist!<CR>
+nnoremap <silent> <Leader>w :set nolist!<CR>
 
 "Enable better matching with %
 runtime macros/matchit.vim
