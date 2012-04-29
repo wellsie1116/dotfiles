@@ -22,11 +22,11 @@ alias reload='source ~/.zshrc'
 alias l='ls -hl'
 alias ll='ls -Ahl'
 alias la='ls -A'
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm 
+#[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm 
 
 ## Variables
 export EDITOR="vim"
-export BROWSER="firefox"
+export BROWSER="chromium"
 export USERNAME=$USER
 export PATH=/home/wellska1/maple14/bin:/home/wellska1/bin:$PATH
 wmname LG3D 2>/dev/null
@@ -49,8 +49,6 @@ ZLS_COLORS=$LS_COLORS
 #export MANPAGER="/usr/bin/most -s"
 # --// Lesspipe //--
 eval `lesspipe.sh`
-#export LESSOPEN="| /usr/bin/lesspipe %s"
-#export LESSCLOSE="/usr/bin/lesspipe %s %s"
 
 ## History
 HISTFILE=~/.histfile
