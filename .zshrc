@@ -48,7 +48,11 @@ ZLS_COLORS=$LS_COLORS
 # --// Colored manpages //--
 #export MANPAGER="/usr/bin/most -s"
 # --// Lesspipe //--
-eval `lesspipe.sh`
+if command -v lesspipe >/dev/null 2>&1; then
+	eval `lesspipe`
+elif command -v lesspipe.sh >/dev/null 2>&1; then
+	eval `lesspipe.sh`
+fi
 
 ## History
 HISTFILE=~/.histfile
