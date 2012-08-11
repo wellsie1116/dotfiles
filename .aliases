@@ -3,4 +3,5 @@ alias docs='cd /mnt/Win7/Users/wellska1/Documents'
 alias c='source course.sh'
 alias fix_time='sudo ntpd -ngq && sudo hwclock --systohc'
 alias win7='rdesktop -g 800x600 -z -x modem -K localhost:3690'
-
+alias axel='axel -a'
+alias aria2c='aria2c -c --stream-piece-selector=geom'

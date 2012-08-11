@@ -2,36 +2,67 @@
 [ -z "$PS1" ] && return
 
 ## Load zsh modules
-autoload -U zcalc 
-autoload -Uz compinit
+autoload -U compinit promptinit zcalc zsh-mime-setup
+autoload -Uz vcs_info
 compinit
+promptinit
+zsh-mime-setup
 zstyle :compinstall filename '/home/wellska1/.zshrc'
 
 ## Options
-setopt appendhistory autocd
+setopt APPEND_HISTORY SHARE_HISTORY
+setopt CORRECT
+setopt AUTO_CD
 
 ## Keys
 bindkey -v
-bindkey "^?" backward-delete-char
-bindkey '^[OH' beginning-of-line
-bindkey '^[OF' end-of-line
+
+bindkey '[3~' delete-char # Del
+bindkey '[H' beginning-of-line # Home
+bindkey '[F' end-of-line # End
+bindkey '[1;5D' backward-word # Left Arrow
+bindkey '[1;5C' forward-word # Right Arrow
+bindkey '' history-incremental-search-backward # Ctrl-R
+bindkey '[A' history-search-backward # Up Arrow
+bindkey '[B' history-search-forward # Down Arrow
+
+bindkey -M vicmd '[3~' delete-char # Del
+bindkey -M vicmd '[H' beginning-of-line # Home
+bindkey -M vicmd '[F' end-of-line # End
+bindkey -M vicmd '[1;5D' backward-word # Left Arrow
+bindkey -M vicmd '[1;5C' forward-word # Right Arrow
+bindkey -M vicmd '' history-incremental-search-backward # Ctrl-R
+bindkey -M vicmd '[A' history-search-backward # Up Arrow
+bindkey -M vicmd '[B' history-search-forward # Down Arrow
+bindkey -M vicmd ' ' magic-space
+
 
 ## Aliases
 . ~/.aliases
-alias reload='source ~/.zshrc'
+alias reload='source /etc/profile && source ~/.zprofile && source ~/.zshrc'
 alias l='ls -hl'
 alias ll='ls -Ahl'
 alias la='ls -A'
 #[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm 
 
+## VCS Integration
+setopt PROMPT_SUBST
+zstyle ':vcs_info:*' enable git cvs svn
+zstyle ':vcs_info:*' actionformats \
+	' [%F{2}%b%F{3}|%F{1}%a%f]'
+zstyle ':vcs_info:*' formats       \
+	' [%F{2}%b%f]'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+precmd () { vcs_info }
+#export PS1='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_}%f%# '
+
 ## Variables
 export EDITOR="vim"
 export BROWSER="chromium"
 export USERNAME=$USER
-export PATH=/home/wellska1/maple14/bin:/home/wellska1/bin:$PATH
 wmname LG3D 2>/dev/null
 export _JAVA_AWT_WM_NONREPARENTING=1
-export PS1="%n@%m:%~%# "
+PS1='%n@%m:%~${vcs_info_msg_0_}%# '
 
 ## Color completion ##
 # enable color support of ls and also add handy aliases
