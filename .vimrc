@@ -12,7 +12,7 @@ set backupdir=~/.vim/tmp,~/tmp,/var/tmp,/tmp,.
 set directory=~/.vim/tmp,~/tmp,/var/tmp,/tmp,.
 
 "Configure whitespace display
-set listchars=tab:>-,trail:·,eol:$
+silent! set listchars=tab:>-,trail:·,eol:$
 nnoremap <silent> <Leader>w :set nolist!<CR>
 
 "Enable better matching with %
