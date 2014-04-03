@@ -1,0 +1,8 @@
+ 
+[alias]
+	b = branch
+	ci = commit
+	st = status
+[user]
+	email = kevin@wellsie.net
+	name = Kevin Wells
