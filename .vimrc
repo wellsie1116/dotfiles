@@ -3,7 +3,7 @@ set number
 set hlsearch
 set wildmenu
 set hidden
-set mouse=a
+set mouse=
 
 let mapleader = ","
 
@@ -28,11 +28,6 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-"Bundles
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'taglist.vim'
 filetype plugin indent on
 
 "latex-suite info
