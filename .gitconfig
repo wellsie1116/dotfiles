@@ -1,8 +1,13 @@
- 
+[user]
+	name = Kevin Wells
+	email = kevin@wellsie.net
 [alias]
 	b = branch
 	ci = commit
 	st = status
-[user]
-	email = kevin@wellsie.net
-	name = Kevin Wells
+	hist = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+	graph = log --graph
+[color]
+	ui = auto
+[push]
+	default = tracking
