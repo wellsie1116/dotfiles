@@ -9,8 +9,8 @@ set softtabstop=-1
 let mapleader = ","
 
 "Set locations for swap files
-set backupdir=~/.vim/tmp,~/tmp,/var/tmp,/tmp,.
-set directory=~/.vim/tmp,~/tmp,/var/tmp,/tmp,.
+set backupdir=~/.vim/tmp,~/tmp,/tmp,.
+set directory=~/.vim/tmp,~/tmp,/tmp,.
 
 "Configure whitespace display
 silent! set listchars=tab:>-,trail:·,eol:$
