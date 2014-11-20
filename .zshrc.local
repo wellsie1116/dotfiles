@@ -1,6 +1,8 @@
 
+## Turn off some stupid options
 unsetopt auto_pushd
 unsetopt nohup
+unsetopt share_history
 
 ## VCS Integration
 zstyle ':vcs_info:*' enable git cvs svn
@@ -34,15 +36,10 @@ bindkey -M vicmd ' ' magic-space
 
 ## Aliases
 . ~/.aliases
-alias reload='source /etc/profile && source ~/.zprofile && source ~/.zshrc'
-alias l='ls -hl'
-alias ll='ls -Ahl'
-alias la='ls -A'
-
+alias reload='source /etc/profile && source ~/.zshrc'
 
 ## Golang
 export GOPATH=~/go
-
 
 ## Variables
 export EDITOR="vim"

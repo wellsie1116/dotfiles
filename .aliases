@@ -1,1 +1,8 @@
 alias clr='clear && ls'
+alias l='ls -hl'
+alias ll='ls -Ahl'
+alias la='ls -A'
+
+# Bad habbits
+alias cls="clear && false"
+alias dir='l && false'
