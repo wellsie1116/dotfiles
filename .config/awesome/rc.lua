@@ -76,6 +76,9 @@ if beautiful.wallpaper then
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
 end
+for s = 1, screen.count() do
+    gears.wallpaper.maximized(".dotfiles/images/TiltShiftGalaxy.jpg", s, true)
+end
 -- }}}
 
 -- {{{ Tags
