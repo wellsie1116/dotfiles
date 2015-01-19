@@ -44,6 +44,7 @@ export GOPATH=~/go
 ## Variables
 export EDITOR="vim"
 export BROWSER="chromium"
+export MANWIDTH=107
 
 
 ### If not running interactively, do nothing
