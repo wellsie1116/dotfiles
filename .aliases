@@ -3,6 +3,10 @@ alias l='ls -hl'
 alias ll='ls -Ahl'
 alias la='ls -A'
 
+alias info='info --vi-keys'
+
 # Bad habbits
 alias cls="clear && false"
 alias dir='l && false'
+alias move='echo No, move it yourself&& false'
+alias copy='echo No, copy it yourself&& false'
