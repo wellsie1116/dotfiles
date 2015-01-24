@@ -92,6 +92,11 @@ ${color0}CPU3: ${template1 3}
 ${color0}CPU4: ${template1 4}
 ${color0}Processes:$color1 $processes  ${color0}Running:$color1 $running_processes
 
+${color2}I/O: $hr
+${color2}Read ${diskio_read /dev/sda}
+${color3}${diskiograph_read /dev/sda}
+${color2}Write ${diskio_write /dev/sda}
+${color3}${diskiograph_write /dev/sda}
 ${color2}File systems: $hr
 ${color2} RAM   ${if_match ${memperc}>90}$color9$else${if_match ${memperc}>80}$color8$else$color3$endif$endif$mem/$memmax${tab 30}${membar 6}
 ${color2} /     ${if_match ${fs_used_perc /}>90}$color9$else${if_match ${fs_used_perc /}>80}$color8$else$color3$endif$endif${fs_used /}/${fs_size /}${tab 30}${fs_bar 6 /}
