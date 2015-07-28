@@ -1,7 +1,31 @@
+"
+" Normal Mode
+"
+" <F2>       toggle line numbers (enabled by default)
+" <leader>e  execute the current script
+" <leader>fx re-format the current buffer as xml
+" <leader>fj re-format the current buffer as json
+" <leader>m  make the current directory
+" <leader>s  clear current search term
+" <leader>w  toggle whitespace display
+" <leader>x  set the execute bit of the current file
+"
+" Insert Mode
+"
+" Functions
+"
+" Reload()  reload .vimrc
+"
+map <Leader>e :update<CR>:!clear<CR>:!make run <CR>
+map <Leader>m :update<CR>:make -sj <CR>
+map <silent> <Leader>fx :%! tidy -utf8 -xml -w 5 -i -q -asxml \| sed "s/^\(  \)*\w/  \0/"<CR>
+map <silent> <Leader>fj :%! python -c "import sys; import json as j; print(j.dumps(j.loads(sys.stdin.read()), indent=1))"<CR>
+
 syntax on
 set number
 set hlsearch
 set wildmenu
+set autoread
 set hidden
 set mouse=
 set softtabstop=-1
@@ -11,6 +35,9 @@ let mapleader = ","
 "Set locations for swap files
 set backupdir=~/.vim/tmp,~/tmp,/tmp,.
 set directory=~/.vim/tmp,~/tmp,/tmp,.
+
+"Release the pathogen
+execute pathogen#infect()
 
 "Configure whitespace display
 silent! set listchars=tab:>-,trail:·,eol:$
@@ -63,6 +90,7 @@ let @p = "^/	ieldt($s{}j"
 " Execute run command in a makefile
 map <Leader>e :update<CR>:!clear<CR>:!make run <CR>
 map <Leader>m :update<CR>:make -sj <CR>
+map <Leader>x :update<CR>:!chmod +x %<CR>
 map <silent> <Leader>fx :%! tidy -utf8 -xml -w 5 -i -q -asxml \| sed "s/^\(  \)*\w/  \0/"<CR>
 map <silent> <Leader>fj :%! python -c "import sys; import json as j; print(j.dumps(j.loads(sys.stdin.read()), indent=1))"<CR>
 command! Reload :source ~/.vimrc
