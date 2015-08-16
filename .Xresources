@@ -58,13 +58,14 @@
 
 ! Xterm ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-xterm.vt100.faceName: Inconsolata:style=Medium 
-xterm.vt100.faceSize: 14
-xterm.vt100.scrollTtyOutput: false
-xterm.vt100.scrollKey: true
-xterm.vt100.background: #000000
-xterm.vt100.foreground: #babdb6
+*.vt100.faceName: Inconsolata:style=Medium 
+*.vt100.faceSize: 14
+*.vt100.scrollTtyOutput: false
+*.vt100.scrollKey: true
+*.vt100.background: #000000
+*.vt100.foreground: #babdb6
 
+! Paste is right click on Windows.  Unbind copy on right click.
 *vt100*translations:        #override \n\
  ~Ctrl ~Meta <Btn3Down>:    visual-bell() \n\
        ~Meta <Btn3Motion>:  visual-bell() \n\
