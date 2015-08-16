@@ -1,8 +1,17 @@
-
 ## Turn off some stupid options
 unsetopt auto_pushd
 unsetopt nohup
 unsetopt share_history
+
+
+## Variables
+export EDITOR="vim"
+export BROWSER="chromium"
+export MANWIDTH=107
+
+# Golang
+export GOPATH=~/go
+
 
 ## VCS Integration
 zstyle ':vcs_info:*' enable git cvs svn
@@ -11,6 +20,7 @@ zstyle ':vcs_info:*' actionformats \
 zstyle ':vcs_info:*' formats       \
 	'[%F{2}%b%f]'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
 
 ## Keys
 bindkey -v
@@ -34,17 +44,22 @@ bindkey -M vicmd '[A' history-search-backward # Up Arrow
 bindkey -M vicmd '[B' history-search-forward # Down Arrow
 bindkey -M vicmd ' ' magic-space
 
-## Aliases
-. ~/.aliases
-alias reload='source /etc/profile && source ~/.zshrc'
 
-## Golang
-export GOPATH=~/go
+## Miscellaneous Aliases
+source ~/.aliases
+alias reload='zrclocal'
 
-## Variables
-export EDITOR="vim"
-export BROWSER="chromium"
-export MANWIDTH=107
+## .zshrc updates
+function edit-file() {
+	$EDITOR $1
+}
+alias .zshrc='edit-file ~/.zshrc.local && reload'
+alias .aliases='edit-file ~/.aliases && reload'
+alias .xresources='edit-file ~/.Xresources && xrdb -merge ~/.Xresources'
+
+alias forkterm='xterm &; disown'
+
+
 
 
 ### If not running interactively, do nothing
