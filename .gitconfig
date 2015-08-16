@@ -11,3 +11,5 @@
 	ui = auto
 [push]
 	default = tracking
+[rebase]
+	autoSquash = true
