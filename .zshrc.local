@@ -45,6 +45,13 @@ bindkey -M vicmd '[B' history-search-forward # Down Arrow
 bindkey -M vicmd ' ' magic-space
 
 
+## System Management
+
+function sc-reload() {
+	sudo systemctl reload-or-try-restart $1
+	systemctl status $1
+}
+
 ## Miscellaneous Aliases
 source ~/.aliases
 alias reload='zrclocal'
@@ -56,6 +63,11 @@ function edit-file() {
 alias .zshrc='edit-file ~/.zshrc.local && reload'
 alias .aliases='edit-file ~/.aliases && reload'
 alias .xresources='edit-file ~/.Xresources && xrdb -merge ~/.Xresources'
+
+## Web helpers
+function web-help() {
+	chromium --user-data-dir=/tmp/web-help --incognito $1 &!
+} >/dev/null 2>&1
 
 alias forkterm='xterm &; disown'
 
